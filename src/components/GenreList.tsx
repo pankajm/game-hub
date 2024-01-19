@@ -1,9 +1,21 @@
-import { HStack, Image, List, ListItem, Text, Tooltip } from "@chakra-ui/react";
-import useGenre from "../hooks/useGenres";
+import {
+  Button,
+  HStack,
+  Image,
+  List,
+  ListItem,
+  Text,
+  Tooltip,
+} from "@chakra-ui/react";
+import useGenre, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 import GenreSkeleton from "./GenreSkeleton";
 
-const GenreList = () => {
+interface Props {
+  onGenreClick: (genre: Genre) => void;
+}
+
+const GenreList = ({ onGenreClick }: Props) => {
   const { data: genres, isLoading, error } = useGenre();
   const genrePlaceholders = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   if (error) return null;
@@ -27,16 +39,19 @@ const GenreList = () => {
               boxSize="32px"
               borderRadius={8}
               src={getCroppedImageUrl(genre.image_background)}
+              marginRight="5px"
             ></Image>
-            <Tooltip
-              hasArrow
-              isDisabled={genre.name.length < 15}
-              label={genre.name}
+
+            <Button
+              style={{
+                textAlign: "left",
+                textWrap: "wrap",
+              }}
+              variant="link"
+              onClick={() => onGenreClick(genre)}
             >
-              <Text noOfLines={1} fontSize="lg">
-                {genre.name}
-              </Text>
-            </Tooltip>
+              {genre.name}
+            </Button>
           </HStack>
         </ListItem>
       ))}
