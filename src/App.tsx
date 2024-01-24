@@ -51,6 +51,7 @@ function App() {
           />
           <SortSelector />
         </HStack>
+        <GameGrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>
   );
