@@ -49,7 +49,7 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <Box paddingLeft={2} marginTop={5}>
+        <Box paddingLeft={2} marginTop={3}>
           <DynamicHeading
             genre={gameQuery.genre?.name}
             platform={gameQuery.platform?.name}
