@@ -1,24 +1,28 @@
-import { useState } from "react";
 import { Box, Grid, GridItem, HStack, Hide, Show } from "@chakra-ui/react";
-import Navbar from "./components/Navbar";
+import { useState } from "react";
+import DynamicHeading from "./components/DynamicHeading";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
+import GenreSelector from "./components/GenreSelector";
+import Navbar from "./components/Navbar";
 import PlatformSelector from "./components/PlatformSelector";
+import SortSelector from "./components/SortSelector";
 import { Genre } from "./hooks/useGenres";
 import { Platform } from "./hooks/usePlatform";
-import SortSelector from "./components/SortSelector";
-import DynamicHeading from "./components/DynamicHeading";
-import GenreSelector from "./components/GenreSelector";
 
 export interface GameQuery {
   genre: Genre;
   platform: Platform;
   sortOrder: string;
   searchText: string;
+  page: number;
+  page_size: number;
 }
 
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+  const [gameQuery, setGameQuery] = useState<GameQuery>({
+    page_size: 20,
+  } as GameQuery);
 
   const handleGenreCLick = (genre: Genre) => {
     setGameQuery({ ...gameQuery, genre });
