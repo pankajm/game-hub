@@ -25,7 +25,7 @@ const GenreSelector = ({ selectedGenreId, onGenreSelect }: Props) => {
         {selectedGenre?.name || "Genre"}
       </MenuButton>
       <MenuList>
-        {genres?.results.map((genre) => (
+        {genres?.results?.map((genre) => (
           <MenuItem key={genre.id} onClick={() => onGenreSelect(genre)}>
             <Image
               boxSize="2rem"
