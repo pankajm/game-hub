@@ -11,8 +11,8 @@ import { Genre } from "./hooks/useGenres";
 import { Platform } from "./hooks/usePlatform";
 
 export interface GameQuery {
-  genre: Genre;
-  platform: Platform;
+  genreId?: number;
+  platformId?: number;
   sortOrder: string;
   searchText: string;
   page: number;
@@ -20,12 +20,10 @@ export interface GameQuery {
 }
 
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({
-    page_size: 20,
-  } as GameQuery);
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   const handleGenreCLick = (genre: Genre) => {
-    setGameQuery({ ...gameQuery, genre });
+    setGameQuery({ ...gameQuery, genreId: genre.id });
   };
   return (
     <Grid
@@ -48,28 +46,25 @@ function App() {
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
           <GenreList
-            selectedGenre={gameQuery.genre}
+            selectedGenreId={gameQuery.genreId}
             onGenreClick={handleGenreCLick}
           />
         </GridItem>
       </Show>
       <GridItem area="main">
         <Box paddingLeft={2} marginTop={3}>
-          <DynamicHeading
-            genre={gameQuery.genre?.name}
-            platform={gameQuery.platform?.name}
-          />
+          <DynamicHeading gameQuery={gameQuery} />
           <HStack spacing={5} marginBottom={4} marginTop={2}>
             <Hide above="lg">
               <GenreSelector
-                selectedGenre={gameQuery.genre}
+                selectedGenreId={gameQuery.genreId}
                 onGenreSelect={handleGenreCLick}
               ></GenreSelector>
             </Hide>
             <PlatformSelector
-              selectedPlatform={gameQuery.platform}
+              selectedPlatformId={gameQuery.platformId}
               onPlatformSelect={(platform: Platform) =>
-                setGameQuery({ ...gameQuery, platform })
+                setGameQuery({ ...gameQuery, platformId: platform.id })
               }
             />
             <SortSelector
