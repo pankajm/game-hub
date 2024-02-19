@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import useGenre, { Genre } from "../hooks/useGenres";
+import useGenreLookup from "../hooks/useGenreLookup";
 
 interface Props {
   selectedGenreId?: number;
@@ -16,7 +17,7 @@ interface Props {
 
 const GenreSelector = ({ selectedGenreId, onGenreSelect }: Props) => {
   const { data: genres } = useGenre();
-  const selectedGenre = genres?.results.find((g) => g.id === selectedGenreId);
+  const selectedGenre = useGenreLookup(selectedGenreId);
 
   return (
     <Menu>

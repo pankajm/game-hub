@@ -19,11 +19,10 @@ class HttpClient<T> {
     this.endpoint = endpoint;
   }
 
-  getAll(axiosConfig: AxiosRequestConfig) {
-    return axiosInstance
+  getAll = (axiosConfig: AxiosRequestConfig) =>
+    axiosInstance
       .get<FetchResponse<T>>(this.endpoint, axiosConfig)
       .then((res) => res.data);
-  }
 }
 
 export default HttpClient;
