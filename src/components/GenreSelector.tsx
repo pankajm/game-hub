@@ -1,23 +1,21 @@
 import {
+  Button,
+  Image,
   Menu,
   MenuButton,
-  Button,
-  MenuList,
   MenuItem,
-  Image,
+  MenuList,
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
-import useGenre, { Genre } from "../hooks/useGenres";
 import useGenreLookup from "../hooks/useGenreLookup";
+import useGenre from "../hooks/useGenres";
+import useGameQueryStore from "../store";
 
-interface Props {
-  selectedGenreId?: number;
-  onGenreSelect: (genre: Genre) => void;
-}
-
-const GenreSelector = ({ selectedGenreId, onGenreSelect }: Props) => {
+const GenreSelector = () => {
   const { data: genres } = useGenre();
-  const selectedGenre = useGenreLookup(selectedGenreId);
+  const selectedGenre = useGenreLookup();
+
+  const updateGenre = useGameQueryStore((s) => s.updateGenre);
 
   return (
     <Menu>
@@ -26,7 +24,7 @@ const GenreSelector = ({ selectedGenreId, onGenreSelect }: Props) => {
       </MenuButton>
       <MenuList>
         {genres?.results?.map((genre) => (
-          <MenuItem key={genre.id} onClick={() => onGenreSelect(genre)}>
+          <MenuItem key={genre.id} onClick={() => updateGenre(genre.id)}>
             <Image
               boxSize="2rem"
               borderRadius={8}

@@ -1,7 +1,9 @@
+import useGameQueryStore from "../store";
 import useGenres from "./useGenres";
 
-const useGenreLookup = (genreId?: number) => {
+const useGenreLookup = () => {
   const { data: genres } = useGenres();
+  const genreId = useGameQueryStore((s) => s.gameQuery.genreId);
   return genres?.results?.find((genre) => genre.id === genreId);
 };
 

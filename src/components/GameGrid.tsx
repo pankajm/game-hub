@@ -3,22 +3,17 @@ import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GamesCardSkeleton from "./GamesCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
-import { GameQuery } from "../App";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-interface Props {
-  gameQuery: GameQuery;
-}
-
-const GameGrid = ({ gameQuery }: Props) => {
+const GameGrid = () => {
   const {
     data: games,
     error,
     isLoading,
     fetchNextPage,
     hasNextPage,
-  } = useGames(gameQuery);
+  } = useGames();
   const cards = [1, 2, 3, 4, 5, 6, 7, 8];
 
   const recordsFetched =

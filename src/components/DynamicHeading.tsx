@@ -1,15 +1,10 @@
 import { Text } from "@chakra-ui/react";
-import { GameQuery } from "../App";
 import useGenreLookup from "../hooks/useGenreLookup";
 import usePlatformLookup from "../hooks/usePlatformLookup";
 
-interface Props {
-  gameQuery: GameQuery;
-}
-
-const DynamicHeading = ({ gameQuery }: Props) => {
-  const genre = useGenreLookup(gameQuery.genreId);
-  const platform = usePlatformLookup(gameQuery.platformId);
+const DynamicHeading = () => {
+  const genre = useGenreLookup();
+  const platform = usePlatformLookup();
 
   return (
     <Text as="b" fontSize="5xl">
