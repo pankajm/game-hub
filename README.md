@@ -2,8 +2,10 @@
 
 ## This is a Game Hub similar to rawg.io (the largest video game database and game discovery service.)
 
-1. *FrontEnd of the project is build using React 18, React Query, Zustand state management and rawg APIs are used to fetch games data*
+1. _FrontEnd of the project is build using React 18, React Query, Zustand state management and rawg APIs are used to fetch games data_
 
-2. *The project supports caching on frontend for performance improvement, platform filter and sort.*
- 
-3. *The application is deployed on vercel* - Check [Game Hub](https://game-hub-eta-teal.vercel.app/) 
+2. _The project supports caching on frontend for performance improvement, platform filter and sort._
+
+3. \*Infinite scrolling makes user see more games as he scrols down
+
+4. _The application is deployed on vercel_ - Check [Game Hub](https://game-hub-eta-teal.vercel.app/)
