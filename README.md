@@ -8,4 +8,4 @@
 
 3. \*Infinite scrolling makes user see more games as he scrols down
 
-4. _The application is deployed on vercel_ - Check [Game Hub](https://game-hub-eta-teal.vercel.app/)
+4. _The application is deployed on vercel_ - Check [Game Store](https://game-store-eta-teal.vercel.app/)

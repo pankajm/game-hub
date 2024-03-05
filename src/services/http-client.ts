@@ -23,6 +23,9 @@ class HttpClient<T> {
     axiosInstance
       .get<FetchResponse<T>>(this.endpoint, axiosConfig)
       .then((res) => res.data);
+
+  get = (slug: number | string) =>
+    axiosInstance.get<T>(this.endpoint + "/" + slug).then((res) => res.data);
 }
 
 export default HttpClient;
