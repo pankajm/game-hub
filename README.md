@@ -1,6 +1,6 @@
-# Game Hub
+# Game Store
 
-## This is a Game Hub similar to rawg.io (the largest video game database and game discovery service.)
+## This is a Game Store similar to rawg.io (the largest video game database and game discovery service.)
 
 1. _FrontEnd of the project is build using React 18, React Query, Zustand state management and rawg APIs are used to fetch games data_
 
